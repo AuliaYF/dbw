@@ -115,7 +115,7 @@ class Topics_model extends CI_Model {
 			array(
 				'field' => 'tp_title',
 				'label' => 'Topic Title',
-				'rules' => 'required|max_length[255]|callback_is_tp_title_exist'),
+				'rules' => 'required|max_length[255]|callback__is_tp_title_exist'),
 			array(
 				'field' => 'tp_desc',
 				'label' => 'Topic Description')

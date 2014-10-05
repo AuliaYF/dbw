@@ -65,7 +65,7 @@
     									<a <?php if(strtolower($active_table) === 'categories'){echo 'class="active"';} ?> href="<?= base_url('tables/categories') ?>">Categories</a>
     								</li>
     								<li>
-    									<a href="#">Topics</a>
+    									<a <?php if(strtolower($active_table) === 'topics'){echo 'class="active"';} ?> href="<?= base_url('tables/topics') ?>">Topics</a>
     								</li>
                                     <li>
                                         <a href="#">Users</a>
