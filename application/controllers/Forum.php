@@ -6,7 +6,11 @@ class Forum extends CI_Controller {
 		'title' => 'Project-Forum',
 		'main_view' => 'forum/frontpage',
 		'table_th_data' => '',
-		'table_tp_data' => ''
+		'table_tp_data' => '',
+		'breadcrumbs' => "Dashboard",
+		'active_table' => '',
+		'active_table_view' => '',
+		'active_table_data' => '',
 		);
 
 	public function __construct()

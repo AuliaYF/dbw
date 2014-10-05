@@ -10,6 +10,9 @@
 	<meta name="author" content="">
 
 	<title>Project-Forum | It's Superuser Here</title>
+    
+    <!-- Custom CSS -->
+    <link href="<?= base_url('assets/css/custom.css') ?>" rel="stylesheet">
 
 	<!-- Bootstrap Core CSS -->
 	<link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
