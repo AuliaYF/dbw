@@ -22,15 +22,19 @@ class Forum extends CI_Controller {
 
 	public function index($tp_id = NULL)
 	{
-		if(!empty($tp_id)){
-			$data = $this->model_tp->getSpecifiedId($tp_id);
-			$this->data['table_tp_data'] = $data;
-			$data = $this->model_th->getSpecified($tp_id);
-			$this->data['table_th_data'] = $data;
+		if($this->session->userdata('logged_in')){
+			if(!empty($tp_id)){
+				$data = $this->model_tp->getSpecifiedId($tp_id);
+				$this->data['table_tp_data'] = $data;
+				$data = $this->model_th->getSpecified($tp_id);
+				$this->data['table_th_data'] = $data;
+			}else{
+				redirect('/');
+			}
+			$this->load->view('basepage', $this->data);
 		}else{
-			redirect('/');
+			redirect('login', 'refresh');
 		}
-		$this->load->view('basepage', $this->data);
 	}
 
 }

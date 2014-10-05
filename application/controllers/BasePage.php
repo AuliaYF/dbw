@@ -14,8 +14,20 @@ class BasePage extends CI_Controller {
 	}
 
 	public function index()
+	{	
+		if($this->session->userdata('logged_in'))
+		{
+			$this->load->view('basepage', $this->data);
+		}else{
+			redirect('login', 'refresh');
+		}
+	}
+
+	public function logout()
 	{
-		$this->load->view('basepage', $this->data);
+		$this->session->unset_userdata('logged_in');
+		$this->session->sess_destroy();
+		redirect('basepage', 'refresh');
 	}
 }
 

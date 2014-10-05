@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2014 at 02:56 PM
+-- Generation Time: Oct 05, 2014 at 03:58 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -31,15 +31,15 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `cat_name` varchar(255) DEFAULT NULL,
   `cat_desc` text,
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_name`, `cat_desc`) VALUES
-(4, 'Testz', 'ini test'),
-(6, 'Android', 'asd');
+(4, 'Testzzxczxczxcxzc', 'ini test'),
+(7, 'Android', 'asdasdasdzxc');
 
 -- --------------------------------------------------------
 
@@ -76,14 +76,7 @@ CREATE TABLE IF NOT EXISTS `threads` (
   KEY `th_topic` (`th_topic`),
   KEY `th_starter` (`th_starter`),
   KEY `th_icon` (`th_icon`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `threads`
---
-
-INSERT INTO `threads` (`th_id`, `th_title`, `th_date`, `th_topic`, `th_icon`, `th_starter`) VALUES
-(2, 'test thread', '0000-00-00', 6, NULL, 1);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -100,15 +93,14 @@ CREATE TABLE IF NOT EXISTS `topics` (
   PRIMARY KEY (`tp_id`),
   KEY `tp_cat` (`tp_cat`),
   KEY `tp_icon` (`tp_icon`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `topics`
 --
 
 INSERT INTO `topics` (`tp_id`, `tp_title`, `tp_cat`, `tp_icon`, `tp_desc`) VALUES
-(5, 'asdasd', 6, NULL, 'asdasdasd'),
-(6, 'Testasd', 4, NULL, 'asdasdsa');
+(6, 'Testasdzxc', 4, NULL, 'asdasdsa');
 
 -- --------------------------------------------------------
 
@@ -136,16 +128,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_email` varchar(255) NOT NULL,
   `user_profile_pic` longblob,
   `user_profile_signature` text,
-  `user_date_joined` datetime DEFAULT NULL,
+  `user_date_joined` date DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_profile_pic`, `user_profile_signature`, `user_date_joined`) VALUES
-(1, 'ucup', 'auliayf', 'auliayf@gmail.com', NULL, NULL, NULL);
+(11, 'ucup', 'PDP+wyoYmOsn1mhse2ix1ObxcZOymS0R25JWVBXy4yjEk+P6KvmB+neUAWSMgV4zKD7f22tH+T8dzeQnxjYviA==', 'auliayf@gmail.com', NULL, '', '2014-10-05');
 
 --
 -- Constraints for dumped tables
