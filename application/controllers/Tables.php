@@ -80,6 +80,9 @@ class Tables extends CI_Controller {
 					}
 				}
 			}
+			else{
+				$this->data['main_view'] = 'errors/error_404';
+			}
 		}elseif($table_name === 'topics'){
 			$this->load->model('categories_model', 'model_cat', TRUE);
 			$cats = $this->model_cat->getAll();
@@ -149,6 +152,8 @@ class Tables extends CI_Controller {
 						redirect('tables/topics');
 					}
 				}
+			}else{
+				$this->data['main_view'] = 'errors/error_404';
 			}
 		}else{
 			$this->data['main_view'] = 'errors/error_404';
