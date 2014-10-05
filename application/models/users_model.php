@@ -22,6 +22,12 @@ class Users_model extends CI_Controller{
 		return $this->db->where('user_name', $user_name)->get($this->db_table)->result();
 	}
 
+	private function getCurrentDate(){
+		$datestring = "%Y-%m-%d";
+		$time = time();
+
+		return mdate($datestring, $time)
+	}
 	public function add(){
 		$users = array(
 			'user_name' => $this->input->post('user_name'),
@@ -29,7 +35,7 @@ class Users_model extends CI_Controller{
 			'user_email' => $this->input->post('user_email'),
 			'user_profile_pic' => $this->input->post('user_profile_pic'),
 			'user_profile_signature' => $this->input->post('user_profile_signature'),
-			'user_date_joined' => $this->input->post('user_date_joined')
+			'user_date_joined' => getCurrentDate()
 			);
 		$this->db->insert($this->db_table, $users);
 
@@ -96,7 +102,7 @@ class Users_model extends CI_Controller{
 				'field' => 'user_email',
 				'label' => 'Email',
 				'rules' => 'required|valid_email|max_length[255]|callback_is_user_email_exist')
-		);
+			);
 		return $form_rules;
 	}
 
