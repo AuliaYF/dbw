@@ -40,7 +40,6 @@ $form = array(
 						<div class="form-group">
 							<?= form_label('Category', 'tp_cat') ?>
 							<?= form_dropdown('tp_cat', $option_cats, set_value('tp_cat', isset($form_value['tp_cat']) ? $form_value['tp_cat'] : ''), 'class="form-control"'); ?>
-							<?= form_error('tp_cat', '<p class="help-block">', '</p>')  ?>
 						</div>
 						<div class="form-group">
 							<?= form_label('Topic Title', 'tp_title')  ?>

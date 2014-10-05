@@ -58,7 +58,7 @@
     						<li>
     							<a href="<?= base_url() ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
     						</li>
-    						<li class="active">
+    						<li <?php if(!empty($active_table)){echo 'class="active"';} ?>>
     							<a href="<?= base_url('tables') ?>"><i class="fa fa-table fa-fw"></i> Tables<span class="fa arrow"></span></a>
     							<ul class="nav nav-second-level">
     								<li>
@@ -68,7 +68,7 @@
     									<a <?php if(strtolower($active_table) === 'topics'){echo 'class="active"';} ?> href="<?= base_url('tables/topics') ?>">Topics</a>
     								</li>
                                     <li>
-                                        <a href="#">Users</a>
+                                        <a <?php if(strtolower($active_table) === 'users'){echo 'class="active"';} ?> href="<?= base_url('tables/users') ?>">Users</a>
                                     </li>
     							</ul>
     							<!-- /.nav-second-level -->

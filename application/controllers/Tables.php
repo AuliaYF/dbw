@@ -39,8 +39,6 @@ class Tables extends CI_Controller {
 					if($this->model->validate_add()){
 						if($this->model->add()){
 							redirect('tables/categories');
-						}else{
-							$this->load->view('basepage', $this->data);
 						}
 					}
 				}
@@ -52,7 +50,7 @@ class Tables extends CI_Controller {
 				if(!empty($field_id)){
 					if($this->input->post('submit')){
 						if($this->model->validate_edit()){
-							$this->model->edit($this->session->userdata('active_cat_name'));
+							$this->model->edit($this->session->userdata('active_cat_id'));
 							$this->session->set_flashdata('message', 'Success');
 							redirect('tables/categories');
 						}else{
@@ -66,7 +64,8 @@ class Tables extends CI_Controller {
 						foreach ($cat as $key => $value) {
 							$this->data['form_value'][$key] = $value;
 						}
-						$this->session->set_userdata('active_cat_name', $cat->cat_id);
+						$this->session->set_userdata('active_cat_id', $cat->cat_id);
+						$this->session->set_userdata('active_cat_name', $cat->cat_name);
 					}
 				}else{
 					redirect('tables/categories');
@@ -113,8 +112,6 @@ class Tables extends CI_Controller {
 					if($this->model->validate_add()){
 						if($this->model->add()){
 							redirect('tables/topics');
-						}else{
-							$this->load->view('basepage', $this->data);
 						}
 					}
 				}
@@ -126,7 +123,7 @@ class Tables extends CI_Controller {
 				if(!empty($field_id)){
 					if($this->input->post('submit')){
 						if($this->model->validate_edit()){
-							$this->model->edit($this->session->userdata('active_tp_title'));
+							$this->model->edit($this->session->userdata('active_tp_id'));
 							redirect('tables/topics');
 						}else{
 							$tp = $this->model->getSpecifiedId($field_id);
@@ -139,7 +136,8 @@ class Tables extends CI_Controller {
 						foreach ($tp as $key => $value) {
 							$this->data['form_value'][$key] = $value;
 						}
-						$this->session->set_userdata('active_tp_title', $tp->tp_id);
+						$this->session->set_userdata('active_tp_id', $tp->tp_id);
+						$this->session->set_userdata('active_tp_title', $tp->tp_title);
 					}
 				}else{
 					redirect('tables/topics');
@@ -150,6 +148,74 @@ class Tables extends CI_Controller {
 				}else{
 					if($this->model->remove($field_id)){
 						redirect('tables/topics');
+					}
+				}
+			}
+		}elseif($table_name === 'users'){
+			$this->load->model('users_model', 'model', TRUE);
+			$this->data['active_table'] = 'users';
+
+			if($method === 'show'){
+				$this->session->unset_userdata('active_user_id', '');
+				$this->session->unset_userdata('active_user_name', '');
+				$this->session->unset_userdata('active_user_email', '');
+
+				$this->data['active_table_data'] = $this->model->getAll();
+				$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/users').'">Users</a>';
+				$this->data['active_table_view'] = 'tables/users_table_view';
+			}elseif($method === 'insert'){
+				$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/users').'">Users</a> > Insert';
+				$this->data['main_view'] = 'users/users_form_view';
+				$this->data['form_action'] = 'tables/users/insert';
+
+				if($this->input->post('submit')){
+					if($this->model->validate_add()){
+						if($this->model->add()){
+							redirect('tables/users');
+						}
+					}
+				}
+			}elseif($method === 'edit'){
+				$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/users').'">Users</a> > Edit';
+				$this->data['form_action'] = 'tables/users/edit/'.$field_id;
+				$this->data['main_view'] = 'users/users_form_view';
+
+				if(!empty($field_id)){
+					if($this->input->post('submit')){
+						if($this->model->validate_edit()){
+							if($this->model->edit($this->session->userdata('active_user_id'))){
+								redirect('tables/users');
+							}
+						}else{
+							$user = $this->model->getSpecified($field_id);
+							foreach ($user as $key => $value) {
+								$this->data['form_value'][$key] = $value;
+								if($key === 'user_pass'){
+									$this->data['form_value'][$key] = $this->model->decode($value);
+								}
+							}
+						}
+					}else{
+						$user = $this->model->getSpecified($field_id);
+						foreach ($user as $key => $value) {
+							$this->data['form_value'][$key] = $value;
+							if($key === 'user_pass'){
+								$this->data['form_value'][$key] = $this->model->decode($value);
+							}
+						}
+						$this->session->set_userdata('active_user_id', $user->user_id);
+						$this->session->set_userdata('active_user_name', $user->user_name);
+						$this->session->set_userdata('active_user_email', $user->user_email);
+					}
+				}else{
+					redirect('tables/users');
+				}
+			}elseif($method === 'delete'){
+				if(empty($field_id)){
+					redirect('tables/users');
+				}else{
+					if($this->model->remove($field_id)){
+						redirect('tables/users');
 					}
 				}
 			}else{
@@ -190,6 +256,32 @@ class Tables extends CI_Controller {
 
 		if($query->num_rows() > 0){
 			$this->form_validation->set_message('_is_tp_title_exist', 'Topic with name '.$new_tp_title.' is exist.');
+			return FALSE;
+		}
+		return TRUE;
+	}
+
+	function _is_user_name_exist(){
+		$active_user_name = $this->session->userdata('active_user_name');
+		$new_user_name = $this->input->post('user_name');
+
+		$query = $this->db->get_where('users', array('user_name' => $new_user_name));
+
+		if(($active_user_name !== $new_user_name) && ($query->num_rows() > 0)){
+			$this->form_validation->set_message('_is_user_name_exist', 'User with name '.$new_user_name.' is exist.');
+			return FALSE;
+		}
+		return TRUE;
+	}
+
+	function _is_user_email_exist(){
+		$active_user_email = $this->session->userdata('active_user_email');
+		$new_user_email = $this->input->post('user_email');
+
+		$query = $this->db->get_where('users', array('user_email' => $new_user_email));
+
+		if(($active_user_email !== $new_user_email) && ($query->num_rows() > 0)){
+			$this->form_validation->set_message('_is_user_email_exist', 'User with email '.$new_user_email.' is exist.');
 			return FALSE;
 		}
 		return TRUE;
