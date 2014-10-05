@@ -99,7 +99,7 @@ class Categories_model extends CI_Model {
 			array(
 				'field' => 'cat_name',
 				'label' => 'Category Name',
-				'rules' => 'required|max_length[255]|callback_is_cat_name_exist'),
+				'rules' => 'required|max_length[255]|callback__is_cat_name_exist'),
 			array(
 				'field' => 'cat_desc',
 				'label' => 'Category Description')

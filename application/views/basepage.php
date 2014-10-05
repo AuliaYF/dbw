@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>SB Admin 2 - Bootstrap Admin Theme</title>
+	<title>Project-Forum | It's Superuser Here</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -48,7 +48,7 @@
     					<span class="icon-bar"></span>
     					<span class="icon-bar"></span>
     				</button>
-    				<a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+    				<a class="navbar-brand" href="index.html">Project-Forum</a>
     			</div>
     			<!-- /.navbar-header -->
 
@@ -56,17 +56,20 @@
     				<div class="sidebar-nav navbar-collapse">
     					<ul class="nav" id="side-menu">
     						<li>
-    							<a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+    							<a href="<?= base_url() ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
     						</li>
     						<li class="active">
-    							<a href="#"><i class="fa fa-table fa-fw"></i> Tables<span class="fa arrow"></span></a>
+    							<a href="<?= base_url('tables') ?>"><i class="fa fa-table fa-fw"></i> Tables<span class="fa arrow"></span></a>
     							<ul class="nav nav-second-level">
     								<li>
-    									<a <?php if(strtolower($active_table) === 'categories'){echo 'class="active"';} ?> href="#">Categories</a>
+    									<a <?php if(strtolower($active_table) === 'categories'){echo 'class="active"';} ?> href="<?= base_url('tables/categories') ?>">Categories</a>
     								</li>
     								<li>
-    									<a href="morris.html">Morris.js Charts</a>
+    									<a href="#">Topics</a>
     								</li>
+                                    <li>
+                                        <a href="#">Users</a>
+                                    </li>
     							</ul>
     							<!-- /.nav-second-level -->
     						</li>

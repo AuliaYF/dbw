@@ -42,6 +42,9 @@ $route['default_controller'] = "BasePage";
 $route['404_override'] = '';
 
 $route['tables'] = 'tables';
+$route['tables/(:any)'] = "tables/index/$1";
+$route['tables/(:any)/(:any)'] = "tables/index/$1/$2";
+$route['tables/(:any)/(:any)/(:num)'] = "tables/index/$1/$2/$3";
 
 $route['categories'] = "categories";
 $route['categories/(:num)'] = "categories/index/$1";

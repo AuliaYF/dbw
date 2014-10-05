@@ -4,6 +4,8 @@ class BasePage extends CI_Controller {
 	public $data = array(
 		'title' => 'Project-Forum',
 		'main_view' => 'frontpage',
+		'breadcrumbs' => 'Dashboard',
+		'active_table' => ''
 		);
 
 	public function __construct()

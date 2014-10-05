@@ -2,51 +2,60 @@
 $form = array(
 	'cat_name' => array(
 		'name' => 'cat_name',
-		'size' => '80',
 		'maxlength' => '255',
-		'class' => 'form_field',
+		'class' => 'form-control form_field',
 		'value' => set_value('cat_name', isset($form_value['cat_name']) ? $form_value['cat_name'] : '')
 		),
 	'cat_desc' => array(
 		'name' => 'cat_desc',
-		'rows' => '5',
-		'cols' => '82',
+		'rows' => '3',
+		'class' => 'form-control',
 		'value' => set_value('cat_desc', isset($form_value['cat_desc']) ? $form_value['cat_desc'] : '')
 		),
 	'submit' => array(
 		'name' => 'submit',
 		'id' => 'submit',
-		'value' => 'Save'
+		'value' => 'Submit',
+		'class' => 'btn btn-default'
+		),
+	'reset' => array(
+		'name' => 'reset',
+		'id' => 'reset',
+		'value' => 'Reset',
+		'class' => 'btn btn-default'
 		)
 	);
 	?>
-	<div class="forumContent">
-		<div class="left">
-			<div class="box below">
-				<div class="head" style="background: #4575B4;"><?= $breadcrumbs  ?></div>
-				<div class="content">
-					<p class="dark">
-						<?= form_open($form_action)  ?>
-						<table>
-							<tr>
-								<td><?= form_label('Category Name', 'cat_name')  ?></td>
-								<td><?= form_input($form['cat_name'])  ?></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><?= form_error('cat_name', '<p>', '</p>')  ?></td>
-							</tr>
-							<tr>
-								<td valign="top"><?= form_label('Category Description', 'cat_desc')  ?></td>
-								<td><?= form_textarea($form['cat_desc'])  ?></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td align="right"><?= form_submit($form['submit']); ?></td>
-							</tr>
-						</table>
-						<? form_close()  ?>
-					</p>
-				</div>
+	<div id="page-wrapper">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="page-header"><?= $breadcrumbs ?></h3>
 			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<?= form_open($form_action) ?>
+						<div class="form-group">
+							<?= form_label('Category Name', 'cat_name'); ?>
+							<?= form_input($form['cat_name']); ?>
+							<?= form_error('cat_name', '<p class="help-block">', '</p>') ?>
+						</div>
+						<div class="form-group">
+							<?= form_label('Category Description', 'cat_desc'); ?>
+							<?= form_textarea($form['cat_desc']); ?>
+						</div>
+						<div class="pull-right">
+							<?= form_submit($form['submit']); ?>
+							<?= form_reset($form['reset']); ?>
+						</div>
+						<?= form_close() ?>
+					</div>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
 		</div>
