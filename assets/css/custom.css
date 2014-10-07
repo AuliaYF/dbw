@@ -65,7 +65,7 @@ body, h1, h2, h3, h4, h5, h6, input, .btn, .dropdown-menu > li > a { font-weight
 .header .navbar-default .navbar-right .form-control { display: inline; margin-top: -5px; }
 .header .breadcrumb { margin-bottom: 40px; margin-top: 20px; }
 /* Main CSS */
-.main { padding-bottom: 40px; }
+.main { padding-bottom: 20px; }
 .main h1 { margin-top: 0; }
 /* 404 CSS */
 .main .oops { padding: 60px 0; text-align: center; }
@@ -79,7 +79,6 @@ body, h1, h2, h3, h4, h5, h6, input, .btn, .dropdown-menu > li > a { font-weight
 .main .oops .form-control:focus { -webkit-box-shadow: none; border-color: #d6e7f6; box-shadow: none; opacity: 0.8; outline: 0; }
 /* Home Page CSS */
 .main p.root { border-bottom: 1px solid #e1e1e1; margin-bottom: 50px; padding-bottom: 20px; }
-.main .category { margin-bottom: 60px; }
 .main .category a.title { color: #333; font-size: 34px; }
 .main .category a.title:hover,
 .main .category a.title:focus { color: #df4c47;  }
