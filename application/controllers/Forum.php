@@ -16,7 +16,7 @@ class Forum extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('threads_model', 'model_th', TRUE);
+		$this->load->model('categories_model', 'model_cat', TRUE);
 		$this->load->model('topics_model', 'model_tp', TRUE);
 	}
 
@@ -26,10 +26,13 @@ class Forum extends CI_Controller {
 			if(!empty($tp_id)){
 				$data = $this->model_tp->getSpecifiedId($tp_id);
 				$this->data['table_tp_data'] = $data;
-				$data = $this->model_th->getSpecified($tp_id);
-				$this->data['table_th_data'] = $data;
+				$data = $this->model_cat->getSpecified($tp_id);
+				$this->data['table_cat_data'] = $data;
 			}else{
-				redirect('/');
+				$data = $this->model_tp->getAll();
+				$this->data['table_tp_data'] = $data;
+				$data = $this->model_cat->getAllHasChild();
+				$this->data['table_cat_data'] = $data;
 			}
 			$this->load->view('basepage', $this->data);
 		}else{
