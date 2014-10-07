@@ -25,7 +25,7 @@
                                     <a class="title" href="forums.html"><?= $row->cat_name ?></a>
                                 </div>
                             </header>
-                            
+
                             <?php foreach($table_tp_data as $row_tp): 
                             if($row_tp->tp_cat === $row->cat_id){
                                 ?>
@@ -57,6 +57,7 @@
                                 <?php } endforeach; ?>
                             </section>
                             <?php } endforeach; ?>
+                            <p class="root"></p>
                         </article>
                     </section>
                     <div class="col-md-1"></div>
