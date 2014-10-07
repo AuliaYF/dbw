@@ -14,35 +14,39 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		if($this->input->post('submit')){
-			if($this->model->validate()){
-				$email = $this->input->post('user_email');
-				$pass = $this->input->post('user_pass');
-				$query = $this->model->getUserData(array('user_email' => $email));
-				if($query->num_rows() > 0){
-					$dbPass = $this->encrypt->decode($query->row()->user_pass);
-					if($dbPass === $pass){
-						$sess_array = array();
-						foreach($query->result() as $row)
-						{
-							$sess_array = array(
-								'active_user_name' => $row->user_name
-								);
-							$this->session->set_userdata('logged_in', $sess_array);
+		if(!$this->session->userdata('logged_in')){
+			if($this->input->post('submit')){
+				if($this->model->validate()){
+					$email = $this->input->post('user_email');
+					$pass = $this->input->post('user_pass');
+					$query = $this->model->getUserData(array('user_email' => $email));
+					if($query->num_rows() > 0){
+						$dbPass = $this->encrypt->decode($query->row()->user_pass);
+						if($dbPass === $pass){
+							$sess_array = array();
+							foreach($query->result() as $row)
+							{
+								$sess_array = array(
+									'active_user_name' => $row->user_name
+									);
+								$this->session->set_userdata('logged_in', $sess_array);
+							}
+							redirect('basepage', 'refresh');
+						}else{
+							$this->data['loginerr'] = TRUE;
+							$this->data['err_msg'] = 'Wrong Password';
 						}
-						redirect('basepage', 'refresh');
 					}else{
 						$this->data['loginerr'] = TRUE;
-						$this->data['err_msg'] = 'Wrong Password';
+						$this->data['err_msg'] = 'User with email '.$email.' does not exist.';
 					}
-				}else{
-					$this->data['loginerr'] = TRUE;
-					$this->data['err_msg'] = 'User with email '.$email.' does not exist.';
 				}
+
 			}
-			
+			$this->load->view('login_view', $this->data);
+		}else{
+			redirect('basepage', 'refresh');
 		}
-		$this->load->view('login_view', $this->data);
 	}
 }
 /* End of file Login.php */
