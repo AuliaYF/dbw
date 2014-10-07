@@ -9,8 +9,8 @@
     			<div class="row">
     				<div class="col-lg-12">
     					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, repudiandae voluptates saepe fugiat nihil, cumque error temporibus, dignissimos consectetur laborum quo reprehenderit culpa eos, nisi est ut optio inventore vitae.</p>
-    				</div>
-    				<!-- /.col-lg-12 -->
-    			</div>
-    			<!-- /.row -->
-    		</div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>

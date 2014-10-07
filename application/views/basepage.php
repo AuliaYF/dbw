@@ -1,136 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="<?= base_url('assets/css/roboto.css') ?>" rel="stylesheet" type="text/css">
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<title>Project-Forum | It's Superuser Here</title>
-
-    <!-- Custom CSS -->
-    <link href="<?= base_url('assets/css/custom.css') ?>" rel="stylesheet">
-
-    <!-- Bootstrap Core CSS -->
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
 
-    <!-- MetisMenu CSS -->
-    <link href="<?= base_url('assets/css/plugins/metisMenu/metisMenu.min.css') ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/css/custom.css') ?>" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <section class="row" style="margin-top: 20px">
+            <section class="col-md-8 main">
+                <article><h2 class="hidden">Categories</h2>
+                    <!-- General Category -->
+                    <?php foreach($table_cat_data as $row): ?>
+                    <section class="category"><h3 class="hidden"><?= $row->cat_name ?></h3>
+                        <!-- Category Header -->
+                        <header class="row">
+                            <div class="col-md-12">
+                                <a class="title" href="forums.html"><?= $row->cat_name ?></a>
+                            </div>
+                        </header>
+                        
+                        <?php foreach($table_tp_data as $row_tp): 
+                            if($row_tp->tp_cat === $row->cat_id){
+                        ?>
+                        <!-- Category Forum -->
+                        <section class="row forum"><h4 class="hidden"><?= $row_tp->tp_title ?></h4>
+                            <div class="col-md-12">
+                                <!-- Forum Header -->
+                                <a class="title" href="forums-topics.html"><?= $row_tp->tp_title ?></a>
+                                <p>
+                                    <?= $row_tp->tp_desc ?>
+                                </p>
 
-    <!-- DataTables CSS -->
-    <link href="<?= base_url('assets/css/plugins/dataTables.bootstrap.css') ?>" rel="stylesheet">
+                                <!-- Forum Details -->
+                                <div class="details">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <th>TOPICS</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td>140,734</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                        <?php } endforeach; ?>
+                    </section>
+                <?php endforeach ?>
+                </article>
+            </section>
+            <div class="col-md-1"></div>
+            <aside class="col-md-3 sidebar">
+                <!-- <h3 class="hidden">Sidebar</h3>
+                Buttons
+                <section><h4 class="hidden">Buttons</h4>
+                    <button class="btn btn-danger btn-lg">NEW CATEGORY</button>
+                    <button class="btn btn-danger btn-lg">NEW FORUM</button>
+                </section>
+                
+                Search
+                <section><h4 class="hidden">Search</h4>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                        <input type="text" class="form-control" placeholder="Search Category">
+                    </div>
+                </section> -->
+            </aside>
+        </section>
+    </div>
 
-    <!-- Custom CSS -->
-    <link href="<?= base_url('assets/css/sb-admin-2.css') ?>" rel="stylesheet">
+    <script src="<?= base_url('assets/js/jquery-1.11.0.js') ?>"></script>
 
-    <!-- Custom Fonts -->
-    <link href="<?= base_url('assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet') ?>" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-    </head>
-
-    <body>
-
-    	<div id="wrapper">
-
-    		<!-- Navigation -->
-    		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-    			<div class="navbar-header">
-    				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-    					<span class="sr-only">Toggle navigation</span>
-    					<span class="icon-bar"></span>
-    					<span class="icon-bar"></span>
-    					<span class="icon-bar"></span>
-    				</button>
-    				<a class="navbar-brand" href="index.html">Project-Forum</a>
-    			</div>
-    			<!-- /.navbar-header -->
-
-                <ul class="nav navbar-top-links navbar-right">
-                    <!-- /.dropdown -->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="<?= base_url('basepage/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                            </li>
-                        </ul>
-                        <!-- /.dropdown-user -->
-                    </li>
-                    <!-- /.dropdown -->
-                </ul>
-
-                <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
-                       <ul class="nav" id="side-menu">
-                          <li>
-                             <a href="<?= base_url() ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                         </li>
-                         <li <?php if(!empty($active_table)){echo 'class="active"';} ?>>
-                             <a href="<?= base_url('tables') ?>"><i class="fa fa-table fa-fw"></i> Tables<span class="fa arrow"></span></a>
-                             <ul class="nav nav-second-level">
-                                <li>
-                                   <a <?php if(strtolower($active_table) === 'categories'){echo 'class="active"';} ?> href="<?= base_url('tables/categories') ?>">Categories</a>
-                               </li>
-                               <li>
-                                   <a <?php if(strtolower($active_table) === 'topics'){echo 'class="active"';} ?> href="<?= base_url('tables/topics') ?>">Topics</a>
-                               </li>
-                               <li>
-                                <a <?php if(strtolower($active_table) === 'users'){echo 'class="active"';} ?> href="<?= base_url('tables/users') ?>">Users</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                </ul>
-            </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
-    </nav>
-
-    <?= $this->load->view($main_view) ?>
-
-</div>
-<!-- /#wrapper -->
-
-<!-- jQuery Version 1.11.0 -->
-<script src="<?= base_url('assets/js/jquery-1.11.0.js') ?>"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="<?= base_url('assets/js/plugins/metisMenu/metisMenu.min.js') ?>"></script>
-
-<!-- DataTables JavaScript -->
-<script src="<?= base_url('assets/js/plugins/dataTables/jquery.dataTables.js') ?>"></script>
-<script src="<?= base_url('assets/js/plugins/dataTables/dataTables.bootstrap.js') ?>"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="<?= base_url('assets/js/sb-admin-2.js') ?>"></script>
-
-<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script>
-  $(document).ready(function() {
-     $('#dataTables-example').dataTable();
- });
-</script>
-
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
 </body>
-
 </html>

@@ -4,7 +4,7 @@ class Tables extends CI_Controller {
 
 	public $data = array(
 		'title' => 'Project-Forum',
-		'main_view' => 'tables_view',
+		'main_view' => 'admin_only/tables_view',
 		'breadcrumbs' => "",
 		'active_table' => '',
 		'active_table_view' => '',
@@ -30,10 +30,10 @@ class Tables extends CI_Controller {
 				if($method === 'show'){
 					$this->data['active_table_data'] = $this->model->getAll();
 					$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/categories').'">Categories</a>';
-					$this->data['active_table_view'] = 'tables/cat_table_view';
+					$this->data['active_table_view'] = 'admin_only/tables/cat_table_view';
 				}elseif($method === 'insert'){
 					$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/categories').'">Categories</a> > Insert';
-					$this->data['main_view'] = 'cats/categories_form_view';
+					$this->data['main_view'] = 'admin_only/cats/categories_form_view';
 					$this->data['form_action'] = 'tables/categories/insert';
 
 					if($this->input->post('submit')){
@@ -46,7 +46,7 @@ class Tables extends CI_Controller {
 				}elseif($method === 'edit'){
 					$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/categories').'">Categories</a> > Edit';
 					$this->data['form_action'] = 'tables/categories/edit/'.$field_id;
-					$this->data['main_view'] = 'cats/categories_form_view';
+					$this->data['main_view'] = 'admin_only/cats/categories_form_view';
 
 					if(!empty($field_id)){
 						if($this->input->post('submit')){
@@ -81,7 +81,7 @@ class Tables extends CI_Controller {
 					}
 				}
 				else{
-					$this->data['main_view'] = 'errors/error_404';
+					$this->data['main_view'] = 'admin_only/errors/error_404';
 				}
 			}elseif($table_name === 'topics'){
 				$this->load->model('categories_model', 'model_cat', TRUE);
@@ -103,10 +103,10 @@ class Tables extends CI_Controller {
 				if($method === 'show'){
 					$this->data['active_table_data'] = $this->model->getAll();
 					$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/topics').'">Topics</a>';
-					$this->data['active_table_view'] = 'tables/topics_table_view';
+					$this->data['active_table_view'] = 'admin_only/tables/topics_table_view';
 				}elseif($method === 'insert'){
 					$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/topics').'">Topics</a> > Insert';
-					$this->data['main_view'] = 'topics/topics_form_view';
+					$this->data['main_view'] = 'admin_only/topics/topics_form_view';
 					$this->data['form_action'] = 'tables/topics/insert';
 
 					if($this->input->post('submit')){
@@ -119,7 +119,7 @@ class Tables extends CI_Controller {
 				}elseif($method === 'edit'){
 					$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/topics').'">Topics</a> > Edit';
 					$this->data['form_action'] = 'tables/topics/edit/'.$field_id;
-					$this->data['main_view'] = 'topics/topics_form_view';
+					$this->data['main_view'] = 'admin_only/topics/topics_form_view';
 
 					if(!empty($field_id)){
 						if($this->input->post('submit')){
@@ -163,10 +163,10 @@ class Tables extends CI_Controller {
 
 					$this->data['active_table_data'] = $this->model->getAll();
 					$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/users').'">Users</a>';
-					$this->data['active_table_view'] = 'tables/users_table_view';
+					$this->data['active_table_view'] = 'admin_only/tables/users_table_view';
 				}elseif($method === 'insert'){
 					$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/users').'">Users</a> > Insert';
-					$this->data['main_view'] = 'users/users_form_view';
+					$this->data['main_view'] = 'admin_only/users/users_form_view';
 					$this->data['form_action'] = 'tables/users/insert';
 
 					if($this->input->post('submit')){
@@ -179,7 +179,7 @@ class Tables extends CI_Controller {
 				}elseif($method === 'edit'){
 					$this->data['breadcrumbs'] = '<a href="'.base_url('tables').'">Tables</a> > <a href="'.base_url('tables/users').'">Users</a> > Edit';
 					$this->data['form_action'] = 'tables/users/edit/'.$field_id;
-					$this->data['main_view'] = 'users/users_form_view';
+					$this->data['main_view'] = 'admin_only/users/users_form_view';
 
 					if(!empty($field_id)){
 						if($this->input->post('submit')){
@@ -220,12 +220,12 @@ class Tables extends CI_Controller {
 						}
 					}
 				}else{
-					$this->data['main_view'] = 'errors/error_404';
+					$this->data['main_view'] = 'admin_only/errors/error_404';
 				}
 			}else{
-				$this->data['main_view'] = 'errors/error_404';
+				$this->data['main_view'] = 'admin_only/errors/error_404';
 			}
-			$this->load->view('basepage', $this->data);
+			$this->load->view('admin_only/basepage', $this->data);
 		}else{
 			redirect('login', 'refresh');
 		}

@@ -3,7 +3,7 @@
 class BasePage extends CI_Controller {
 	public $data = array(
 		'title' => 'Project-Forum',
-		'main_view' => 'frontpage',
+		'main_view' => 'admin_only/frontpage',
 		'breadcrumbs' => 'Dashboard',
 		'active_table' => ''
 		);
@@ -17,7 +17,7 @@ class BasePage extends CI_Controller {
 	{	
 		if($this->session->userdata('logged_in'))
 		{
-			$this->load->view('basepage', $this->data);
+			$this->load->view('admin_only/basepage', $this->data);
 		}else{
 			redirect('login', 'refresh');
 		}
