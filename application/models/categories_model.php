@@ -22,6 +22,10 @@ class Categories_model extends CI_Model {
 		return FALSE;
 	}
 
+	public function getAllHasChild(){
+		return $this->db->join('topics', 'topics.tp_cat = categories.cat_id')->get($this->db_table)->result();
+	}
+
 	public function getAll(){
 		return $this->db->order_by('cat_id', 'ASC')->get($this->db_table)->result();
 	}
