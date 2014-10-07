@@ -31,7 +31,7 @@ class Forum extends CI_Controller {
 			}else{
 				$data = $this->model_tp->getAll();
 				$this->data['table_tp_data'] = $data;
-				$data = $this->model_cat->getAllHasChild();
+				$data = $this->model_cat->getAll();
 				$this->data['table_cat_data'] = $data;
 			}
 			$this->load->view('basepage', $this->data);
