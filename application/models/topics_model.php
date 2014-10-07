@@ -44,6 +44,11 @@ class Topics_model extends CI_Model {
 		return $this->db->where('tp_id', $id)->limit(1)->get($this->db_table)->row();
 	}
 
+	public function getSpecifiedByCat($id){
+		return $this->db->get_where($this->db_table, array('tp_cat' => $id));
+	}
+
+
 	public function countData(){
 		return $this->db->count_all($this->db_table);
 	}
