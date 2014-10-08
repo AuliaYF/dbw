@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2014 at 03:58 PM
+-- Generation Time: Oct 08, 2014 at 09:53 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -78,6 +78,14 @@ CREATE TABLE IF NOT EXISTS `threads` (
   KEY `th_icon` (`th_icon`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
+--
+-- Dumping data for table `threads`
+--
+
+INSERT INTO `threads` (`th_id`, `th_title`, `th_date`, `th_topic`, `th_icon`, `th_starter`) VALUES
+(2, 'thread ucup', '2014-10-08', 8, NULL, 12),
+(3, 'test ah', '2014-10-08', 8, NULL, 12);
+
 -- --------------------------------------------------------
 
 --
@@ -93,14 +101,15 @@ CREATE TABLE IF NOT EXISTS `topics` (
   PRIMARY KEY (`tp_id`),
   KEY `tp_cat` (`tp_cat`),
   KEY `tp_icon` (`tp_icon`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `topics`
 --
 
 INSERT INTO `topics` (`tp_id`, `tp_title`, `tp_cat`, `tp_icon`, `tp_desc`) VALUES
-(6, 'Testasdzxc', 4, NULL, 'asdasdsa');
+(6, 'Testasdzxc', 4, NULL, 'asdasdsa'),
+(8, 'Test', 4, NULL, 'asdasdasd');
 
 -- --------------------------------------------------------
 
@@ -130,14 +139,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_profile_signature` text,
   `user_date_joined` date DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_profile_pic`, `user_profile_signature`, `user_date_joined`) VALUES
-(11, 'ucup', 'PDP+wyoYmOsn1mhse2ix1ObxcZOymS0R25JWVBXy4yjEk+P6KvmB+neUAWSMgV4zKD7f22tH+T8dzeQnxjYviA==', 'auliayf@gmail.com', NULL, '', '2014-10-05');
+(11, 'ucup', 'PDP+wyoYmOsn1mhse2ix1ObxcZOymS0R25JWVBXy4yjEk+P6KvmB+neUAWSMgV4zKD7f22tH+T8dzeQnxjYviA==', 'auliayf@gmail.com', NULL, '', '2014-10-05'),
+(12, 'auliayf', '9TH0dd4tFLnAHXcRJDyfTw3xyx0Cn78oQLoqs7yZSMw7WmzHY7tigmZnmMZ1NPaJI1ngtHbcfMhKRkubEw34xQ==', 'ucup@gmail.com', NULL, 'ucup', '2014-10-08');
 
 --
 -- Constraints for dumped tables
