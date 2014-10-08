@@ -1,40 +1,46 @@
-		    		<div id="page-wrapper">
-		    			<div class="row">
-		    				<div class="col-lg-12">
-		    					<h1 class="page-header"><?= $breadcrumbs ?></h1>
-		    				</div>
-		    				<!-- /.col-lg-12 -->
-		    			</div>
-		    			<!-- /.row -->
-		    			<div class="row">
-		    				<div class="col-lg-12">
-		    					<?php if(count($table_th_data) > 0){ ?>
-		    					<table style="width: 100%; " class="contentTable" cellpadding="0" cellspacing="0">
-									<!--<thead>
-										<tr>
-											<td style="width: 5%;">Icon</td>
-											<td style="width: 60%;">Name</td>
-											<td style="width: 15%; background: #f5f5f5;">Statistic</td>
-											<td style="width: 20%;">Latest</td>
-										</tr>
-									</thead>-->
-									<?php foreach ($table_th_data as $rows): ?>
-										<tr style="border: 1px solid #000; border-right: 0px; border-top: 0px; border-left: 0px">
-											<td style="width: 5%; padding-top: 0px; padding-bottom: 0px">
-												<img src="<?= base_url('assets/img/ic_action_collection.png') ?>" alt="Icon" width="25px" height="25px">
-											</td>
-											<td style="width: 60%;">
-												<?= anchor('forum/'.$rows->th_id, '<b>'.$rows->th_title.'</b>', array('class' => 'dark'));  ?>
-												<p><?= 'by '.$rows->user_name ?></p>
-											</td>
-											<td style="width: 15%; background: #f5f5f5">Statistic</td>
-											<td style="width: 20%;">Latest</td>
-										</tr>
-									<?php endforeach ?>
-								</table>
-								<?php } ?>
-							</div>
-							<!-- /.col-lg-12 -->
+<article><h2 class="hidden">Categories</h2>
+	<!-- General Category -->
+	<?php foreach($table_cat_data as $row): 
+	if($this->model_tp->getSpecifiedByCat($row->cat_id)->num_rows() > 0){
+		?>
+		<section class="category"><h3 class="hidden"><?= $row->cat_name ?></h3>
+			<!-- Category Header -->
+			<header class="row">
+				<div class="col-md-12">
+					<a class="title" href="forums.html"><?= $row->cat_name ?></a>
+				</div>
+			</header>
+
+			<?php foreach($table_tp_data as $row_tp): 
+			if($row_tp->tp_cat === $row->cat_id){
+				?>
+				<!-- Category Forum -->
+				<section class="row forum"><h4 class="hidden"><?= $row_tp->tp_title ?></h4>
+					<div class="col-md-12">
+						<!-- Forum Header -->
+						<a class="title" href="<?= base_url('forum/'.$row_tp->tp_title) ?>"><?= $row_tp->tp_title ?></a>
+						<p>
+							<?= $row_tp->tp_desc ?>
+						</p>
+
+						<!-- Forum Details -->
+						<div class="details">
+							<table class="table">
+								<tbody>
+									<tr>
+										<th>THREADS</th>
+										<th></th>
+									</tr>
+									<tr>
+										<td><?= $this->model_th->countData($row_tp->tp_id) ?></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
-						<!-- /.row -->
 					</div>
+				</section>
+				<?php } endforeach; ?>
+			</section>
+			<?php } endforeach; ?>
+			<p class="root"></p>
+		</article>

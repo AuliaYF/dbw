@@ -26,12 +26,16 @@ class Threads_model extends CI_Model {
 		return $this->db->order_by('th_id', 'ASC')->get($this->db_table)->result();
 	}
 
-	public function getSpecified($tp_id){
-		return $this->db->where('th_topic', $tp_id)->join('users', 'users.user_id = threads.th_starter')->get($this->db_table)->result();
+	public function getSpecified($param){
+		return $this->db->like('th_topic', $this->getTopicID($param)->tp_id)->join('users', 'users.user_id = threads.th_starter')->get($this->db_table)->result();
 	}
 
-	public function countData(){
-		return $this->db->count_all($this->db_table);
+	private function getTopicID($param){
+		return $this->db->get_where('topics', array('tp_title' => $param))->row();
+	}
+
+	public function countData($param){
+		return $this->db->get_where($this->db_table, array('th_topic' => $param))->num_rows();
 	}
 
 	public function edit($cat_id){
