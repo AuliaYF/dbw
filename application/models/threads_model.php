@@ -30,7 +30,7 @@ class Threads_model extends CI_Model {
 		return $this->db->like('th_topic', $this->getTopicID($param)->tp_id)->join('users', 'users.user_id = threads.th_starter')->get($this->db_table)->result();
 	}
 
-	private function getTopicID($param){
+	public function getTopicID($param){
 		return $this->db->get_where('topics', array('tp_title' => $param))->row();
 	}
 

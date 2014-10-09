@@ -23,12 +23,6 @@ class BasePage extends CI_Controller {
 		}
 	}
 
-	public function logout()
-	{
-		$this->session->unset_userdata('logged_in');
-		$this->session->sess_destroy();
-		redirect('basepage', 'refresh');
-	}
 }
 
 /* End of file Itung.php */

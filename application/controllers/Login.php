@@ -48,6 +48,13 @@ class Login extends CI_Controller {
 			redirect('basepage', 'refresh');
 		}
 	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('logged_in');
+		$this->session->sess_destroy();
+		redirect('basepage', 'refresh');
+	}
 }
 /* End of file Login.php */
 /* Location: ./application/controllers/Login.php */

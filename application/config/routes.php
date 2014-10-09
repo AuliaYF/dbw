@@ -49,6 +49,7 @@ $route['tables/(:any)/(:any)/(:num)'] = "tables/index/$1/$2/$3";
 $route['forum'] = "forum";
 $route['forum/(:num)'] = "forum/index/$1";
 $route['forum/(:any)'] = "forum/index/$1";
+$route['forum/(:any)/(:any)'] = "forum/index/$1/$2";
 
 
 /* End of file routes.php */
