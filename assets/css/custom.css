@@ -26,7 +26,7 @@ body, h1, h2, h3, h4, h5, h6, input, .btn, .dropdown-menu > li > a { font-weight
 .header .navbar-inverse .navbar-nav > li > a.sign-up-link { color: #34c78a; }
 .header .navbar-inverse .navbar-text { color: #666; margin: 18px; }
 .header .navbar-inverse .navbar-text a.checkbox-label { text-decoration: none; }
-.header .navbar-inverse .navbar-collapse img { margin-left: -15px; margin-right: 10px; }
+.header .navbar-inverse .navbar-collapse img {margin-right: 30px; }
 .header .navbar-inverse .dropdown-menu > li > a:hover,
 .header .navbar-inverse .dropdown-menu > li > a:focus { background-color: #fff; color: #343446; }
 .header .navbar-inverse .dropdown-menu > .active > a,
