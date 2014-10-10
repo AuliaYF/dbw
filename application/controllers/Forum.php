@@ -6,6 +6,7 @@ class Forum extends CI_Controller {
 		'title' => 'Project-Forum',
 		'main_view' => 'forum/frontpage',
 		'sidebar_view' => 'forum/frontpage_sidebar',
+		'active_user_name' => '',
 		'form_action' => '',
 		'insert' => FALSE,
 		'table_th_data' => '',
@@ -28,6 +29,8 @@ class Forum extends CI_Controller {
 	public function index($param = NULL, $param2 = NULL)
 	{	
 		if($this->session->userdata('logged_in')){
+			$this->data['active_user_name'] = $this->session->userdata('logged_in')['active_user_name'];
+		}
 			if(empty($param)){
 				$data = $this->model_tp->getAll();
 				$this->data['table_tp_data'] = $data;
@@ -56,9 +59,6 @@ class Forum extends CI_Controller {
 				}
 			}
 			$this->load->view('basepage', $this->data);
-		}else{
-			redirect('login', 'refresh');
-		}
 	}
 
 }
