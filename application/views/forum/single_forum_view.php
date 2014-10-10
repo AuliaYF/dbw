@@ -1,9 +1,12 @@
 <section class="forum-header">
 	<h1><?= $table_tp_data->tp_title ?></h1>
 </section>
-<p class="root">
-<?= $table_tp_data->tp_desc ?>
-</p>
+<div class="root">
+	<p><?= $table_tp_data->tp_desc ?></p>
+	<a href="<?= base_url('forum/'.$table_tp_data->tp_title.'/insert') ?>" class="btn btn-success btn-lg">New Thread</a>
+</div>
+
+<?php if(count($active_table_data) > 0){ ?>
 <article><h2 class="hidden">Topics</h2>
 	<?php foreach($active_table_data as $row): ?>
 		<!-- Topic -->
@@ -49,3 +52,4 @@
 		</section>
 	<?php endforeach ?>
 </article>
+<?php } ?>

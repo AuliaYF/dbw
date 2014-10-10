@@ -1,241 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Project-Forum | It's Superuser Here</title>
-    <!-- Custom CSS -->
-    
-
+    <meta charset="UTF-8">
+    <title>Document</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="<?= base_url('assets/css/plugins/metisMenu/metisMenu.min.css') ?>" rel="stylesheet">
-
-    <!-- DataTables CSS -->
-    <link href="<?= base_url('assets/css/plugins/dataTables.bootstrap.css') ?>" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="<?= base_url('assets/css/sb-admin-2.css') ?>" rel="stylesheet">
-    
-    <!-- Forum CSS-->
-    <link href="<?= base_url('assets/css/forum.css') ?>" rel="stylesheet">
 
     <link href="<?= base_url('assets/css/custom.css') ?>" rel="stylesheet">
 
     <link href="<?= base_url('assets/css/roboto.css') ?>" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="<?= base_url('assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet') ?>" type="text/css">
-
+    <style>
+        .header-brand{padding-top: 10px; padding-bottom: 10px; padding-right: 20px;}
+        .sidebar UL{list-style-type: none; clear: right; margin: 0; padding: 0;}
+        .sidebar UL LI{padding: 10px 5px; text-align: right;}
+        .sidebar UL LI.active{background: #454545;}
+        .sidebar UL LI.active a{color: #f9f9f9;}
+        .left-arrow{width: 0; height: 0; border-bottom: 21px solid transparent; border-top: 22px solid transparent; border-right: 20px solid #454545; font-size: 0; line-height: 0; float: left; margin-left: -25px; margin-top: -10px;}
+        .sidebar .tp{font-weight: bold; color: #a9a9a9;}
+        .contentTable td{ padding-left: 10px; padding-right: 10px;}
+    </style>
 </head>
 <body>
-    <h1 class="hidden">ini apa</h1>
-    <div class="header-background"></div>
-
-    <div class="container">
-        <!-- Header -->
+    <div class="container-fluid">
         <section>
-            <header class="row header">
-                <div class="col-md-12">
-                    <nav class="navbar navbar-inverse" role="navigation"><h1 class="hidden">Login Form</h1>
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
+            <header class="row">
+                <nav class="navbar navbar-default navbar-static-top header-brand" role="navigation" style="margin-bottom: 0; background: #1f2036;">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="<?= base_url('forum') ?>" class="navbar-brand" style="text-decoration: none; font-size: 31pt; color: white;">
+                            Project-Forum
+                        </a>
 
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <img src="<?= base_url('assets/img/ic_action_person.png') ?>" width="60" height="60" class="pull-left" alt="User Photo">
-                            <p class="navbar-text">Howdy, <?= $this->session->userdata('logged_in')['active_user_name'] ?></p>
-                            <div class="navbar-form navbar-left">
-                                <a href="<?= base_url('login/logout') ?>">
-                                    <button class="btn btn-default">Logout</button>
-                                </a>
-                            </div>
-
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Preferences <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="profile.html">Profile</a></li>
-                                        <li><a href="#">Setting</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Control <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="forums-moderators.html">Moderators</a></li>
-                                        <li><a href="#">Users</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="#">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x"></i>
-                                        </span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x"></i>
-                                        </span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-dribbble fa-stack-1x"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-
-                    <div class="jumbotron">
-                        <h1>MOON <span>LIGHT</span></h1>
                     </div>
-
-                    <nav class="navbar navbar-default" role="navigation"><h1 class="hidden">Main Menu</h1>
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
+                    <form action="" class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control input-box"  placeholder="Search">
+                                <a href="#" class="input-group-addon"><i class="glyphicon glyphicon-search"></i></a>
+                            </div>
                         </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">HOME</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="about.html">ABOUT</a></li>
-                                <li><a href="contact.html">CONTACT</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <span class="glyphicon glyphicon-search"></span>
-                                    <input class="form-control" type="text" placeholder="Search">
-                                </li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </nav>
-
-                    <?= $breadcrumbs ?>
-                </div>
+                    </form>
+                    <form class="navbar-form navbar-right" >
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group ">
+                                <input type="password" class="form-control" placeholder="Password">
+                                <a href="#" class="input-group-addon"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </nav>
             </header>
         </section>
-
-        <!-- Home Page -->
-        <section class="row"><h1 class="hidden">Content</h1>
+        <section class="row" style="margin-top: 20px">
             <section class="col-md-8 main">
-                <?php $this->load->view($main_view); ?>
+                <article><h2 class="hidden">Categories</h2>
+                    <?php $this->load->view($main_view); ?>
+                </article>
             </section>
             <div class="col-md-1"></div>
-            <aside class="col-md-3 sidebar"><h3 class="hidden">Sidebar</h3>
+            <aside class="col-md-3 sidebar">
                 <?php $this->load->view($sidebar_view); ?>
             </aside>
         </section>
+    </div>
 
-        <!-- Footer -->
-        <section>
-            <footer class="row footer">
-                <div class="col-md-12">
-                    <nav class="navbar navbar-default" role="navigation"><h3 class="hidden">Up</h3>
-                        <div class="navbar-collapse">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><span class="up">UP</span></li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </nav>
+    <script src="./js/jquery-1.11.0.js"></script>
 
-                    <div class="jumbotron">
-                        <div class="row">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-8">
-                                <h2>About</h2>
-                                <p class="about">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh. Duis tincidunt lectus quis dui viverra vestibulum.</p>
-
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <i class="fa fa-twitter"></i>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit nam. <a href="#">http://t.co/link</a>
-                                            <br />
-                                            <span><time datetime="2011-11-12 14:54:39">15 Minutes ago</time></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-1">
-                                        <i class="fa fa-envelope"></i>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p>
-                                            <input type="text" class="form-control" placeholder="Sign up to our newsletter">
-                                            <a class="newsletter" href="#">Submit</a>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-1"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-2"></div>
-                        </div>
-                    </div>
-
-                    <nav class="navbar navbar-inverse" role="navigation"><h3 class="hidden">Copyright and Site map</h3>
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
-                            <ul class="nav navbar-nav">
-                                <li>
-                                    <p class="navbar-text navbar-right">&copy; Copyright 2014 - Designed by <a href="http://myflashlab.com/">myFlashLab Team</a></p>
-                                </li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Site map</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </nav>
-                </div>
-            </footer>
-        </section>
-    </div> <!-- /container -->
-
-    <div class="footer-background"></div>
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="<?= base_url('assets/js/jquery-1.11.0.js') ?>"></script>
-    <script src="<?= base_url('assets/js/bootstrap.js') ?>"></script>
-
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./js/bootstrap.min.js"></script>
+    
     <script src="<?= base_url('assets/js/main.js') ?>"></script>
     
     <?php if($insert){ ?>

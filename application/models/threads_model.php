@@ -34,6 +34,10 @@ class Threads_model extends CI_Model {
 		return $this->db->get_where('topics', array('tp_title' => $param))->row();
 	}
 
+	public function getTopicData($param){
+			return $this->db->get_where('topics', array('tp_cat' => $this->getTopicID($param)->tp_cat))->result();
+	}
+
 	public function countData($param){
 		return $this->db->get_where($this->db_table, array('th_topic' => $param))->num_rows();
 	}

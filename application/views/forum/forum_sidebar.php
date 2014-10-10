@@ -1,12 +1,10 @@
-<!-- Buttons -->
-<section><h4 class="hidden">Buttons</h4>
-    <a href="<?= base_url('forum/'.$table_tp_data->tp_title.'/insert') ?>" class="btn btn-danger btn-lg">NEW THREAD</a>
-</section>
-
-<!-- Search -->
-<section><h4 class="hidden">Search</h4>
-    <div class="input-group">
-        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-        <input type="text" class="form-control" placeholder="Search Category">
-    </div>
-</section>
+<h3 class="hidden">Sidebar</h3>
+<span class="pull-right tp">FORUMS</span>
+<ul>
+	<?php foreach($breadcrumbs as $row): ?>
+		<li <?php if($table_tp_data->tp_title === $row->tp_title){ ?> class="active" <?php } ?>>
+			<?php if($table_tp_data->tp_title === $row->tp_title){ ?><div class="left-arrow"></div><?php } ?>
+			<a href="<?= base_url('forum/'.$row->tp_title) ?>"><?= $row->tp_title ?></a>
+		</li>
+	<?php endforeach; ?>
+</ul>

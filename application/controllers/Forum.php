@@ -46,18 +46,13 @@ class Forum extends CI_Controller {
 				}else{
 					$param = strtolower($param);
 					$param = str_replace("%20", "-", $param);
-					$this->data['main_view'] = 'forum/single_forum_view';
 					$data = $this->model_th->getSpecified($param);
-					if(count($data) > 0){
-						$this->data['table_tp_data'] = $this->model_th->getTopicID($param);
-						$this->data['breadcrumbs'] = '<ol class="breadcrumb"><li><a href="'.base_url().'">Home</a></li><li class="active">'.$this->data['table_tp_data']->tp_title.'</li></ol>';
-						$this->data['active_table_data'] = $data;
+					$this->data['main_view'] = 'forum/single_forum_view';
+					$this->data['table_tp_data'] = $this->model_th->getTopicID($param);
+					$this->data['breadcrumbs'] = $this->model_th->getTopicData($param);
+					$this->data['active_table_data'] = $data;
 
-						$this->data['sidebar_view'] = 'forum/forum_sidebar';
-					}else{
-						show_404();
-						return;
-					}
+					$this->data['sidebar_view'] = 'forum/forum_sidebar';
 				}
 			}
 			$this->load->view('basepage', $this->data);
