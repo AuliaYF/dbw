@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2014 at 09:53 AM
+-- Generation Time: Oct 11, 2014 at 09:24 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -57,7 +57,14 @@ CREATE TABLE IF NOT EXISTS `replies` (
   PRIMARY KEY (`rp_id`),
   KEY `rp_starter` (`rp_starter`),
   KEY `rp_thread` (`rp_thread`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `replies`
+--
+
+INSERT INTO `replies` (`rp_id`, `rp_title`, `rp_content`, `rp_date`, `rp_thread`, `rp_starter`) VALUES
+(6, 'test', '<p>asdasdasdas</p>', '2014-10-11 14:23:11', 9, 12);
 
 -- --------------------------------------------------------
 
@@ -68,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `replies` (
 CREATE TABLE IF NOT EXISTS `threads` (
   `th_id` int(8) NOT NULL AUTO_INCREMENT,
   `th_title` text NOT NULL,
-  `th_date` date NOT NULL,
+  `th_date` datetime NOT NULL,
   `th_topic` int(8) NOT NULL,
   `th_icon` int(8) DEFAULT NULL,
   `th_starter` int(8) NOT NULL,
@@ -76,15 +83,14 @@ CREATE TABLE IF NOT EXISTS `threads` (
   KEY `th_topic` (`th_topic`),
   KEY `th_starter` (`th_starter`),
   KEY `th_icon` (`th_icon`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `threads`
 --
 
 INSERT INTO `threads` (`th_id`, `th_title`, `th_date`, `th_topic`, `th_icon`, `th_starter`) VALUES
-(2, 'thread ucup', '2014-10-08', 8, NULL, 12),
-(3, 'test ah', '2014-10-08', 8, NULL, 12);
+(9, 'test', '2014-10-11 14:23:11', 6, NULL, 12);
 
 -- --------------------------------------------------------
 
@@ -109,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `topics` (
 
 INSERT INTO `topics` (`tp_id`, `tp_title`, `tp_cat`, `tp_icon`, `tp_desc`) VALUES
 (6, 'Testasdzxc', 4, NULL, 'asdasdsa'),
-(8, 'Test', 4, NULL, 'asdasdasd');
+(8, 'Test', 4, NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
 -- --------------------------------------------------------
 
@@ -146,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_profile_pic`, `user_profile_signature`, `user_date_joined`) VALUES
-(11, 'ucup', 'PDP+wyoYmOsn1mhse2ix1ObxcZOymS0R25JWVBXy4yjEk+P6KvmB+neUAWSMgV4zKD7f22tH+T8dzeQnxjYviA==', 'auliayf@gmail.com', NULL, '', '2014-10-05'),
+(11, 'ucup', 'vkSbPVsexUwslw49/Sw4HQ6Cw9wnPLFhxhDyNB2VAp+Z0VzQRJ0tpc8U5/Qvz5x0wr5NyQthSpm8rSsGcPdf0A==', 'auliayf@gmail.com', NULL, '', '2014-10-05'),
 (12, 'auliayf', '9TH0dd4tFLnAHXcRJDyfTw3xyx0Cn78oQLoqs7yZSMw7WmzHY7tigmZnmMZ1NPaJI1ngtHbcfMhKRkubEw34xQ==', 'ucup@gmail.com', NULL, 'ucup', '2014-10-08');
 
 --

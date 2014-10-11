@@ -27,11 +27,12 @@ class Login extends CI_Controller {
 							foreach($query->result() as $row)
 							{
 								$sess_array = array(
+									'active_user_id' => $row->user_id,
 									'active_user_name' => $row->user_name
 									);
 								$this->session->set_userdata('logged_in', $sess_array);
 							}
-							redirect('basepage', 'refresh');
+								redirect($this->session->userdata('url_to_go'), 'refresh');
 						}else{
 							$this->data['loginerr'] = TRUE;
 							$this->data['err_msg'] = 'Wrong Password';
@@ -45,7 +46,7 @@ class Login extends CI_Controller {
 			}
 			$this->load->view('login_view', $this->data);
 		}else{
-			redirect('basepage', 'refresh');
+			redirect('/', 'refresh');
 		}
 	}
 
@@ -53,7 +54,7 @@ class Login extends CI_Controller {
 	{
 		$this->session->unset_userdata('logged_in');
 		$this->session->sess_destroy();
-		redirect('basepage', 'refresh');
+		redirect('/', 'refresh');
 	}
 }
 /* End of file Login.php */

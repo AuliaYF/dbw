@@ -50,6 +50,7 @@ $route['forum'] = "forum";
 $route['forum/(:num)'] = "forum/index/$1";
 $route['forum/(:any)'] = "forum/index/$1";
 $route['forum/(:any)/(:any)'] = "forum/index/$1/$2";
+$route['forum/insert/(:any)'] = 'forum/insert/$1';
 
 
 /* End of file routes.php */

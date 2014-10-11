@@ -17,7 +17,7 @@
 					<table>
 						<tbody>
 							<tr>
-								<td><a class="title" href="topics-posts.html"><?= $row->th_title ?></a></td>
+								<td><a class="title" href="<?= current_url().'/'.$row->th_title ?>"><?= $row->th_title ?></a></td>
 								<td>
 									<img src="img/user.png" width="70" height="70" class="pull-right" alt="User Photo">
 									<img src="img/user.png" width="35" height="35" class="pull-right" alt="User Photo">
@@ -43,7 +43,7 @@
 								<td><?= $row->user_name ?></td>
 								<td><?= $row->user_name ?></td>
 								<td>40</td>
-								<td>30</td>
+								<td><?= $this->model_th->countReplies($row->th_title)-1 ?></td>
 							</tr>
 						</tbody>
 					</table>
